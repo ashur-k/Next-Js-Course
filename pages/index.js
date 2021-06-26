@@ -52,6 +52,9 @@ function HomePage(props){
                     content="Appplication made by following Next JS react Meetups"
                 />
             </Head>
+            <hr />
+            <h2 style={{textAlign:'center', color:'#77002e'}}>HOME PAGE</h2>
+            <hr/>
             <MeetupList meetups={props.meetups} />
         </Fragment>
         

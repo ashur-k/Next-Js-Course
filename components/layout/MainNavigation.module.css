@@ -9,10 +9,12 @@
 }
 
 .logo {
-  font-size: 2rem;
+  font-size: 1.25rem;
   color: white;
   font-weight: bold;
 }
+
+
 
 .header ul {
   list-style: none;
@@ -23,12 +25,13 @@
 }
 
 .header li {
-  margin-left: 3rem;
+  margin-left: 1rem;
+  text-align: center;
 }
 
 .header a {
   text-decoration: none;
-  font-size: 1.5rem;
+  font-size: 1.25rem;
   color: #fcb8d2;
 }
 
@@ -37,3 +40,4 @@
 .header a.active {
   color: white;
 }
+

@@ -13,11 +13,13 @@ function MeetupDetails(props) {
                     content={props.meetupData.description}
                 />
             </Head>
+            <hr />
+            <h2 style={{textAlign:'center', color:'#77002e'}}>{props.meetupData.title}</h2>
+            <hr/>
             <MeetupDetail 
-            image={props.meetupData.image}
-            title={props.meetupData.title}
-            address={props.meetupData.address}
-            description={props.meetupData.description}
+                image={props.meetupData.image}
+                address={props.meetupData.address}
+                description={props.meetupData.description}
             />
         </Fragment>
         
