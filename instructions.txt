@@ -1,0 +1,108 @@
+Next-JS is React framework for production. 
+{React is Library, you need extra library like routing etc}
+
+Features NEXTJS offers:
+•	Full stack Framework for React JS
+•	Makes building large application easier
+Next JS – Key Features and Benefits:
+•	Built-in server-side rendering support
+•	File Based Routing
+To create Next application:
+ 	npx create-next-app 
+ 	export const getStaticProps = async () => {
+ 	  const res = await fetch (`${server}/api/articles`)
+ 	  const articles = await res.json()
+ 	
+ 	  return {
+ 	    props: {
+ 	      articles
+ 	    }
+ 	  }
+ 	}
+ 	=> and then give app the name
+ 	Cd into app directory name and 
+ 	run command yarn dev or npm run dev
+Three important folders in Next JS app:
+1.	Pages
+a.	This is most important folder, that is where we set up file base routing. We can find different pages here which is going to make up our application.
+2.	Public
+a.	Hold public resources that out project use something like images for e.g.
+b.	In next JS we don’t have index.html file like react
+c.	In next JS that index page is dynamically pre-render when the request reaches the server. So, we can return initial page with content.
+d.	
+3.	Styles
+a.	Hold styles files 
+
+Standard React Component: 
+function HomePage() {
+   	 return(
+        	<div>
+ <h1>The Home Page</h1>
+</div>
+        )
+}
+export default HomePage
+File Based Routing System:
+1.	Alternative way of organising pages folder:
+a.	We can create a new sub folder in pages folder an create new file with name index.js.
+b.	Using that special index.js file name. This page still will be loaded by folder name. In my case news is the folder name so in route it so going to be news. 
+c.	This approach is useful for nested paths. 
+d.	For e.g., now if we have another file in that folder its going to be like news/something-else in browser URL route.
+2.	We use special context of [].js square brackets with JS extension. 
+a.	If you have square bracket like this in your file this tells next JS that this will be a dynamic page. So that it will be loaded for different values in your path.
+b.	Identifier names inside brackets its totally up to us but we need square brackets.
+3.	To extract the concrete value entered in the URL when this page is loaded, next Js gives us the special hook which we can use.
+a.	A special react hook which we can use with functional components.
+
+Import { useRouter } from ‘next/router
+
+To use this hook we can call it in function simply like this. 
+	const router = useRouter
+	console.log(router.query.newsId
+We now can get our router object. If we console.log that (router.query.newsId) we will get 2 results fir will be unidentified as its doesn’t know what is inside the URL and then it knows so second time it will console.log the value.
+
+Why this is helpful:
+1.	So now we can use this as a constant, and then if we have a backend API/database, from which we can fetch our news, so we can fetch the item with ID 
+Starting ne project from existing project:
+I have downloaded zip file from github and then extracted in folder, then I entered into that folder and have run command npm install
+Then run command npm run dev to start project
+What is State / use state Practical explanation:
+1.	Import { useEffect } from ‘react’
+ 	It runs whenever the component is render but not after
+ 	useEffect( () => { //inside here we can fetch our data
+ 	// send a http request and fetch data
+ 	// we can setState here }, []);
+ 	Inside useEffect function we can fetch our data.
+ 	We can manage some state for this component with the useState hook
+2.	c
+3.	Const [loadedMeetups, setLoadedMeetups] = useState([]);
+4.	useEffect(() => {setLoadedMeetups(); }, []});
+
+UseEffect work such that it executes this function after importing after the component function is executed. So that the means the first time this home page component is render, loadedMeetups is an empty array, then useEffect function will execute and then it will update the state, and then this component function will execute again because the state change and it will then re-render the loadedMeetups with actual data
+But we will have 2 component render cycle , if we fetch up data from server our user will see loading spinner means data is being load from server and it could not be user we want to offer.
+Next JS core features help us with this problem:
+Fetching Data for pre-rendering:
+Two forms of pre-rendering in next, they might sound different but code runs at different time line
+1.	Static Generation (This is an alternative to state )
+a.	export function getStaticProps() {}
+i.	This has to be call with the same name
+ii.	First thing is call will be getStaticProps() befire it call the component function
+iii.	It called this for its jobs is to prepare props for the page
+iv.	This is async function we can return the promise, it waits until data is loaded or other words promise is resolved
+v.	Any code we write here will never end up on client side
+vi.	Never execute on the client-side, never reache the machine of the visitor’s
+vii.	We always need to return an object in getStaticProps 
+b.	 Export async function getStaticProps () { 
+//fetch data from an api
+return {
+	props:{
+		meetups: DUMMY_MEETUPS
+};
+}
+i.	We need to set props property in return and it has to be name props and that then will hold another object which we will receive in our main component function to display data
+ii.	Data inside props is made ready in fetch data from an api call
+
+2.	Server-Side Rendering
+
+
+
